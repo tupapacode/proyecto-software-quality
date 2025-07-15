@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Cliente</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4cc9f0;
+            --danger-color: #f72585;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f7fa;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--secondary-color);
+            text-align: right;
+        }
+
+        input, select {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(72, 149, 239, 0.2);
+        }
+
+        input[readonly] {
+            background-color: #f0f0f0;
+            cursor: not-allowed;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .form-row select {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e9e9e9;
+        }
+
+        .total-row {
+            font-weight: bold;
+            background-color: #e3f2fd !important;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .alert-info {
+            background-color: #e3f2fd;
+            color: var(--secondary-color);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .form-group {
+                grid-template-columns: 1fr;
+                text-align: left;
+            }
+            
+            label {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Detalles del Cliente</h1>
+    
+    <div class="form-container">
+        <form>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input placeholder="Ingrese el nombre" type="text" id="nombre" name="nombre" value="{{ detalles_cliente['nameCliente'] }}" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input placeholder="Ingrese el apellido" type="text" id="apellido" name="apellido" value="{{ detalles_cliente['apellidoCliente'] }}" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="cedula">Cédula:</label>
+                <input type="text" id="cedula" placeholder="Ingrese el número de cédula" name="cedula" value="0{{ detalles_cliente['cedulaCliente'] }}" readonly>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-primary" type="button" onclick="window.location.href='/'">Volver</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="form-container">
+        <h2>Agregar items a la factura</h2>
+        <form action="/datosaFactura" method="post">
+            <div class="form-row">
+                <select name="idCategoria" class="select" id="" required>
+                    <option selected disabled value="">Seleccione categoría</option>
+                    {% for datos_categoria in datos_categoria %}
+                        <option value="{{ datos_categoria['idCategoria'] }}">{{ datos_categoria['nameCategoria'] }}</option>
+                    {% endfor %}
+                </select>
+                
+                <select name="idTipoCarrera" class="select" id="" required>
+                    <option selected disabled value="">Seleccione tipo de carrera</option>
+                    {% for datos_tipoCarrera in datos_tipoCarrera %}
+                        <option value="{{ datos_tipoCarrera['idTipoCarrera'] }}">{{ datos_tipoCarrera['nameTipoCarrera'] }}</option>
+                    {% endfor %}
+                </select>
+                
+                <input type="hidden" name="idFactura" value="{{ factura_id }}">
+                
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="form-container">
+        <h2>Detalles de la Factura</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Tipo Carrera</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dato in datosFactura %}
+                <tr>
+                    <td>{{ dato['nameCategoria'] }}</td>
+                    <td>{{ dato['nameTipoCarrera'] }}</td>
+                    <td>${{ dato['precioEntrada'] }}</td>
+                    <td>{{ dato['Fecha'] }}</td>
+                </tr>
+                {% endfor %}
+                <tr class="total-row">
+                    <td colspan="2">Total</td>
+                    <td>${{ total_precios }}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <form action="/cerrarfactura" method="POST">
+            <input name="factura_id" type="hidden" value="{{ factura_id }}">
+            <input type="hidden" id="idStatus" value="{{ idStatus }}">
+            <input type="hidden" name="precioTotal" value="{{ total_precios }}">
+            
+            <div class="action-buttons">
+                <button type="submit" class="btn btn-danger">Cerrar Factura</button>
+                <a href="/verfacturas" class="btn btn-primary">Volver a lista de facturas</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const idStatus = document.getElementById('idStatus');
+            const botones = document.querySelectorAll('.btn:not(.btn-primary)');
+            const selects = document.querySelectorAll('.select');
+            const formContainer = document.querySelector('.form-container:nth-child(3)');
+
+            if (parseInt(idStatus.value) == 0) {
+                const alertDiv = document.createElement('div');
+                alertDiv.className = 'alert alert-info';
+                alertDiv.textContent = "Orden abierta correctamente";
+                formContainer.insertBefore(alertDiv, formContainer.firstChild);
+            } else {
+                const alertDiv = document.createElement('div');
+                alertDiv.className = 'alert alert-info';
+                alertDiv.textContent = "La presente orden está cerrada, modo solo vista";
+                formContainer.insertBefore(alertDiv, formContainer.firstChild);
+
+                botones.forEach(boton => {
+                    if (!boton.classList.contains('btn-primary')) {
+                        boton.disabled = true;
+                        boton.style.opacity = '0.6';
+                        boton.style.cursor = 'not-allowed';
+                    }
+                });
+
+                selects.forEach(select => {
+                    select.disabled = true;
+                    select.style.backgroundColor = '#f0f0f0';
+                });
+            }
+        };
+    </script>
+</body>
+</html>
